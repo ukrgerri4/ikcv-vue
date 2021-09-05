@@ -1,0 +1,30 @@
+<template>
+	<div class="form-wrap p-2 shadow rounded">
+		<form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+			<div class="mb-3">
+				<label for="login" class="form-label font-weight-bold" i18n>Name</label>
+				<input type="text" id="login" formControlName="userName" class="form-control" [ngClass]="{'is-invalid': submitted && userName?.invalid }">
+			</div>
+			<div>
+				<label for="password" class="form-label font-weight-bold" i18n>Password</label>
+				<input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': submitted && password?.invalid }">
+			</div>
+
+			<div class="my-2" [style.height]="'24px'">
+				<span *ngIf="isServerError" class="text-danger" i18n>Server error</span>
+			</div>
+
+			<button type="submit" class="btn btn-success font-weight-bold" i18n>Submit</button>
+		</form>  
+	</div>
+</template>
+
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+
+@Options({})
+export default class SignIn extends Vue {}
+</script>
+<style lang="scss" scoped>
+@import "@/styles/colors.scss";
+</style>

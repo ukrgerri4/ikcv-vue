@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  ikcv-vue:
+    image: ukrgerri4/ikcv-vue:${TAG:-latest}
+    container_name: ikcv-vue
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "80"
